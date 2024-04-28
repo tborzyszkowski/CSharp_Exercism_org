@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace excercism
-{
+namespace Excersism {
 	public static class LargestSeriesProduct
 	{
 		public static long GetLargestProduct(string digits, int span)

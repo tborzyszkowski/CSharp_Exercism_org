@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace excercism {
+namespace Excersism {
 	class RemoteControlCar
 	{
 		public int DistanceDriven { get; set; } = 0;

@@ -5,8 +5,7 @@ using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace excercism
-{
+namespace Excersism {
 	public static class Sieve
 	{
 		public static int[] Primes(int limit)

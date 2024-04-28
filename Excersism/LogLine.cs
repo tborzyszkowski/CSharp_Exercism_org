@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace excercism {
+namespace Excersism {
 	static class LogLine {
 		const string INFO = "INFO";
 		const string WARNING = "WARNING";

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace excercism {
+namespace Excersism {
 	public static class PhoneNumber {
 
 		public static (bool IsNewYork, bool IsFake, string LocalNumber) Analyze(string phoneNumber) {
