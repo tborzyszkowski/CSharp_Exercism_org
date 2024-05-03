@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace Excersism {
 	public static class RunLengthEncoding {
-		public static string Encode(string input)
-		{
-			if (input == null || input.Length == 0)
+		public static string Encode(string input) {
+			if (input.Length == 0)
 				return input;
 			char[] charInput = input.ToCharArray();
 			int count = 0;
-			int idx = 0; 
+			int idx = 0;
 			int len = charInput.Length;
 			char currentChar;
 			StringBuilder sb = new StringBuilder();
@@ -40,7 +39,36 @@ namespace Excersism {
 		}
 
 		public static string Decode(string input) {
-			throw new NotImplementedException("You need to implement this function.");
+			if (input.Length == 0)
+				return input;
+			char[] charInput = input.ToCharArray();
+			StringBuilder sb = new StringBuilder();
+			int len = charInput.Length;
+			int idx = 0;
+			int count = 0;
+			while (idx < len)
+			{
+				count = 0;
+
+				char pomChar = charInput[idx];
+				while (Char.IsNumber(pomChar))
+				{
+					if (count > 0)
+						count *= 10;
+					count += pomChar - '0';
+					if (idx < len)
+					{
+						idx++;
+						pomChar = charInput[idx];
+					}
+				}
+				if (count > 0)
+					sb.Append(pomChar, count);
+				else
+						sb.Append(pomChar);
+				idx++;
+			}
+			return sb.ToString();
 		}
 	}
 }
