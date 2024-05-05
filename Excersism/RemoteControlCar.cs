@@ -5,35 +5,47 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Excersism {
-	class RemoteControlCar
-	{
-		public int DistanceDriven { get; set; } = 0;
+	public class RemoteControlCar {
+		public int DistanceDrivenByCar { get; set; } = 0;
 		public int RemainingBatteryCharge { get; set; } = 100;
+		public readonly int Speed;
+		public readonly int BatteryDrain;
 
-		public static RemoteControlCar Buy()
+		public RemoteControlCar(int speed, int batteryDrain)
 		{
-			return new RemoteControlCar();
+			Speed = speed;
+			BatteryDrain = batteryDrain;
 		}
 
-		public string DistanceDisplay()
-		{
-			return $"Driven {this.DistanceDriven} meters";
-		}
+		public bool BatteryDrained() =>
+			RemainingBatteryCharge  < BatteryDrain;
+		
 
-		public string BatteryDisplay() {
-			return (this.RemainingBatteryCharge > 0) ? 
-				$"Battery at {this.RemainingBatteryCharge}%" :
-				"Battery empty";
-		}
+		public int DistanceDriven() => DistanceDrivenByCar;
 
 		public void Drive()
 		{
-			if (this.RemainingBatteryCharge > 0)
+			if (RemainingBatteryCharge >= BatteryDrain)
 			{
-				this.DistanceDriven += 20;
-				this.RemainingBatteryCharge -= 1;
+				DistanceDrivenByCar += Speed;
+				RemainingBatteryCharge -= BatteryDrain;
 			}
 		}
+
+		public static RemoteControlCar Nitro() => 
+			new RemoteControlCar(50, 4);
+	}
+
+	public class RaceTrack
+	{
+		public int Distance { get; set; } = 0;
+
+		public RaceTrack(int distance) => 
+			Distance = distance;
+		
+
+		public bool TryFinishTrack(RemoteControlCar car) => 
+			Math.Ceiling((double)Distance / car.Speed) * car.BatteryDrain <= 100;
 	}
 
 }
